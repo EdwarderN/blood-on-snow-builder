@@ -2,6 +2,8 @@
 
 A static army builder for **Blood on Snow**, a Russian Civil War skirmish game. It runs entirely in the browser: no framework, no build step, no external libraries or CDNs.
 
+**Live:** <https://edwardern.github.io/blood-on-snow-builder/>
+
 Use it to:
 
 - choose a side and subfaction;
