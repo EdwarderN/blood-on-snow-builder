@@ -1,0 +1,95 @@
+/* Blood on Snow: design tokens and components.
+   Taken from the rulebook PDF. Do not change these values; build the app's own CSS on top of this file. */
+
+@font-face { font-family: Garamond; src: url(assets/fonts/eb-garamond-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Garamond; src: url(assets/fonts/eb-garamond-latin-ext-400-normal.woff2) format("woff2"); font-weight: 400; unicode-range: U+0100-024F, U+00C0-00FF; font-display: swap; }
+@font-face { font-family: Garamond; src: url(assets/fonts/eb-garamond-latin-600-normal.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: Garamond; src: url(assets/fonts/eb-garamond-latin-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: Oswald; src: url(assets/fonts/oswald-latin-500-normal.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: Oswald; src: url(assets/fonts/oswald-latin-600-normal.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: Oswald; src: url(assets/fonts/oswald-latin-700-normal.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+  --paper: #f3ecdd;        /* page background */
+  --panel: #f8f3e8;        /* cards, boxes */
+  --panel-dark: #ebe1cc;   /* sidebars, formula boxes, zebra rows */
+  --mat: #fbf7ee;          /* picture frame mat */
+  --ink: #231c16;          /* body text, dark bars */
+  --ink-soft: #5b4a39;     /* captions, notes, stat header row */
+  --muted: #7a6a55;        /* running heads, disabled */
+  --red: #8a1d14;          /* accent: headings, trait names, rules */
+  --gold: #f0c8a0;         /* points on dark bars */
+  --rule: #b9a88c;         /* thin rules, box borders */
+  --frame: #6b5a46;        /* card and frame borders */
+  --shadow: #d2c4a8;       /* offset shadow */
+  --amber: #a8641a;        /* warnings (app only) */
+
+  --f-body: Garamond, "EB Garamond", Georgia, serif;
+  --f-head: Oswald, "Arial Narrow", "Roboto Condensed", sans-serif;
+}
+
+html { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.42; }
+body { margin: 0; }
+p { margin: 0 0 .55em; }
+
+/* Headings: condensed, uppercase, tracked */
+.h-page { font-family: var(--f-head); font-weight: 700; font-size: 2rem; text-transform: uppercase; letter-spacing: .05em; margin: 0; border-bottom: 2px solid var(--red); padding-bottom: .15em; }
+.h-kicker { font-family: var(--f-head); font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--red); }
+.h-section { font-family: var(--f-head); font-weight: 600; font-size: 1.15rem; text-transform: uppercase; letter-spacing: .06em; color: var(--red); margin: 1em 0 .4em; }
+.h-sub { font-family: var(--f-head); font-weight: 500; font-size: .95rem; text-transform: uppercase; letter-spacing: .05em; margin: .8em 0 .3em; }
+
+/* Card: units, weapons, soldiers in the list */
+.card { background: var(--panel); border: 1px solid var(--frame); box-shadow: 4px 4px 0 var(--shadow); padding: 8px; margin: 0 0 16px; }
+.card-img { border: 1px solid #3a2e24; background: #fff; margin-bottom: 8px; }
+.card-img img { display: block; width: 100%; height: 190px; object-fit: cover; object-position: center 25%; }
+.card-img.tall img { width: auto; max-width: 100%; height: 240px; margin: 0 auto; object-fit: contain; }
+.card-img.tall { background: #e6dcc6; }
+.card-img.weapon img { height: 110px; object-fit: contain; background: #f6eede; }
+.card-h { display: flex; align-items: baseline; gap: 8px; background: var(--ink); color: var(--paper); padding: 5px 8px; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .06em; }
+.card-h .nm { font-weight: 600; font-size: 1rem; }
+.card-h .tag { font-size: .65rem; border: 1px solid #d8c7a8; padding: 0 4px; }
+.card-h .pts { margin-left: auto; white-space: nowrap; color: var(--gold); font-size: .95rem; }
+
+/* Stats strip */
+.stats { width: 100%; border-collapse: collapse; margin: 0 0 6px; }
+.stats th { background: var(--ink-soft); color: var(--paper); font-family: var(--f-head); font-weight: 500; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; text-align: center; padding: 2px 4px; }
+.stats td { background: #fff; text-align: center; font-weight: 600; padding: 3px 4px; border-bottom: 1px solid var(--frame); }
+
+.trait { font-size: .95rem; margin: 0 0 .3em; }
+.trait-name { font-family: var(--f-head); font-weight: 500; font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--red); }
+.trait.inactive { opacity: .45; }
+.note { font-size: .88rem; font-style: italic; color: var(--ink-soft); margin: 0; }
+
+/* Framed picture with caption */
+.frame { margin: 4px 0 14px; padding: 8px; background: var(--mat); border: 1px solid var(--frame); box-shadow: 4px 4px 0 var(--shadow); }
+.frame img { display: block; width: 100%; border: 1px solid #3a2e24; }
+.frame figcaption { font-style: italic; font-size: .85rem; color: var(--ink-soft); text-align: center; padding-top: 6px; }
+
+/* Boxed panels: faction rules, subfaction choices, sidebars */
+.panel { background: var(--panel); border: 1px solid var(--rule); padding: 10px 12px 6px; margin: 0 0 12px; }
+.panel h4 { font-family: var(--f-head); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; color: var(--red); margin: 0 0 .3em; }
+.panel.selected { border: 2px solid var(--red); box-shadow: 4px 4px 0 var(--shadow); }
+.sidebar { background: var(--panel-dark); border-left: 4px solid var(--red); padding: 10px 12px 6px; margin: 10px 0 14px; }
+
+/* Tables */
+.table { width: 100%; border-collapse: collapse; font-size: .95rem; margin: 6px 0 14px; }
+.table th { background: var(--ink); color: var(--paper); font-family: var(--f-head); font-weight: 500; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 8px; }
+.table td { padding: 5px 8px; border-bottom: 1px solid #cdbfa4; vertical-align: top; }
+.table tr:nth-child(even) td { background: #ece3d1; }
+
+/* Buttons */
+.btn { font-family: var(--f-head); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; min-height: 44px; padding: 0 16px; background: var(--ink); color: var(--paper); border: 0; box-shadow: 3px 3px 0 var(--shadow); cursor: pointer; }
+.btn:hover { background: var(--red); }
+.btn.secondary { background: var(--panel); color: var(--ink); border: 1px solid var(--frame); }
+.btn:disabled { background: var(--rule); color: var(--panel); box-shadow: none; cursor: not-allowed; }
+
+/* Points counter and validation */
+.points { font-family: var(--f-head); font-weight: 700; font-size: 1.4rem; letter-spacing: .05em; }
+.points.over { color: var(--red); }
+.msg { font-size: .95rem; padding: 6px 10px; margin: 0 0 6px; border-left: 4px solid; background: var(--panel); }
+.msg.error { border-color: var(--red); }
+.msg.warning { border-color: var(--amber); }
+.disabled-reason { font-size: .8rem; font-style: italic; color: var(--muted); }
+
+/* Typed period document (optional, e.g. an empty-list message) */
+.doc { font-family: "Courier New", monospace; font-size: .82rem; line-height: 1.4; background: var(--mat); border: 1px dashed #8a7a64; padding: 10px 12px; }

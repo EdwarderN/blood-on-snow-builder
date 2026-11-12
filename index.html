@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A detachment builder for Blood on Snow, a Russian Civil War skirmish game.">
+  <meta name="theme-color" content="#f3ecdd">
+  <title>Blood on Snow — Detachment Builder</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="h-kicker">Blood on Snow</span>
+        <span class="brand-name">Detachment Builder</span>
+      </div>
+      <div class="topbar-grid">
+        <label class="field name-field">
+          <span>List name</span>
+          <input class="input" id="list-name" maxlength="80" autocomplete="off" value="Untitled Detachment">
+        </label>
+        <label class="field size-field">
+          <span>Game size</span>
+          <select class="input" id="game-size"></select>
+        </label>
+        <div class="points-box">
+          <span>Points</span>
+          <span class="points" id="points">0 / 500</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn secondary" type="button" data-action="save">Save</button>
+          <button class="btn secondary" type="button" data-action="load">Load</button>
+          <button class="btn secondary" type="button" data-action="share">Share</button>
+          <button class="btn" type="button" data-action="print">Print</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="doc">LOADING DETACHMENT…</div>
+    </main>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast" aria-live="polite"></div>
+  <div id="print-roster" aria-hidden="true"></div>
+
+  <noscript>
+    <div class="doc">This army builder needs JavaScript.</div>
+  </noscript>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

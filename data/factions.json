@@ -1,0 +1,52 @@
+{
+  "sides": [
+    {
+      "id": "whites", "name": "Whites",
+      "unitGroups": ["both", "whites", "interventionists"],
+      "factionRules": [
+        { "name": "Foreign Support", "text": "White Soldiers never become Out of Ammo. A natural 1 on a Supply check only ends the action." }
+      ],
+      "subfactions": [
+        { "id": "denikin", "name": "Denikin", "rules": [
+          { "name": "Careful Planning", "text": "After all Soldiers are deployed, you may redeploy one of yours." },
+          { "name": "Professional Officers", "text": "Your Commander may give up to 4 Orders per Round." } ],
+          "modifiers": [] },
+        { "id": "kolchak", "name": "Kolchak", "rules": [
+          { "name": "Siberian Commander", "text": "Your Soldiers ignore rough terrain." },
+          { "name": "Protégé of the West", "text": "All equipment costs 1 point less." } ],
+          "modifiers": [ { "type": "equipmentDiscount", "amount": 1 } ] },
+        { "id": "wrangel", "name": "Wrangel", "rules": [
+          { "name": "Charismatic Leader", "text": "Soldiers within 16 cm of the Commander get +1 to Conviction tests." },
+          { "name": "Last Stand", "text": "When one of your Soldiers is about to be removed, he may first make one free Shoot or Fight." } ],
+          "modifiers": [] },
+        { "id": "kornilov", "name": "Kornilov", "rules": [
+          { "name": "Kornilovtsy", "text": "You may take any number of Colour Regiment Soldiers, and they cost 2 points less." },
+          { "name": "Exemplar Discipline", "text": "+1 to Discipline tests." } ],
+          "modifiers": [ { "type": "unitDiscount", "unit": "colour", "amount": 2 }, { "type": "noLimit", "limit": "colourRegiments" } ] }
+      ]
+    },
+    {
+      "id": "reds", "name": "Reds",
+      "unitGroups": ["both", "reds", "internationals"],
+      "factionRules": [
+        { "name": "Class Consciousness", "text": "A failed Order doesn't cost the Soldier an action." },
+        { "name": "Tula Arsenals", "text": "Red firearms jam only on a 1 on the Jam check." },
+        { "name": "Partisan Support", "text": "Once per game, at the start of any Round, choose one. Reinforcement: place a Red Guard with a Mosin-Nagant M1891 within 8 cm of any table edge and at least 20 cm from all enemies; it may activate this Round. Ambush: one enemy Soldier has 2 actions this Round." }
+      ],
+      "subfactions": [
+        { "id": "konarmiya", "name": "Budyonny's Konarmiya", "rules": [
+          { "name": "Sabre Charge", "text": "The cavalry charge bonus is +2." },
+          { "name": "Cheap Horses", "text": "Horses cost 5 points." } ],
+          "modifiers": [ { "type": "horseCost", "amount": 5 } ] },
+        { "id": "chapaev", "name": "Chapaev's Division", "rules": [
+          { "name": "Cheap Tachankas", "text": "Tachankas cost 5 points." },
+          { "name": "Steppe March", "text": "Infantry ignore rough terrain on their first Move each activation." } ],
+          "modifiers": [ { "type": "itemCost", "item": "tachanka", "cost": 5 } ] },
+        { "id": "partisans", "name": "Partisans", "rules": [
+          { "name": "Forest Ambush", "text": "After everyone else is deployed, place up to 3 of your Soldiers anywhere at least 20 cm from enemies." },
+          { "name": "Cheap Obrez", "text": "The Obrez costs 3 points less." } ],
+          "modifiers": [ { "type": "itemDiscount", "item": "obrez", "amount": 3 } ] }
+      ]
+    }
+  ]
+}

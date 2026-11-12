@@ -1,0 +1,11 @@
+{
+  "name": "blood-on-snow-builder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static army builder for Blood on Snow",
+  "scripts": {
+    "test": "node tools/run-tests.mjs",
+    "serve": "node tools/serve.mjs"
+  }
+}

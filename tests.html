@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blood on Snow — Tests</title>
+  <link rel="stylesheet" href="theme.css">
+  <style>
+    body { max-width: 920px; margin: 0 auto; padding: 24px 16px 60px; }
+    .test-summary { margin: 18px 0; font-size: 1.05rem; }
+    .test-summary.pass { border-left-color: #2f6b3a; }
+    .test-summary.fail { border-left-color: var(--red); }
+    .results { list-style: none; margin: 0; padding: 0; }
+    .result { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; padding: 9px 10px; border-bottom: 1px solid var(--rule); background: var(--panel); }
+    .result .status { font-family: var(--f-head); font-weight: 600; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+    .result.pass .status { color: #2f6b3a; }
+    .result.fail .status { color: var(--red); }
+    .result .name { font-weight: 600; }
+    .result .detail { display: block; color: var(--red); font-style: italic; margin-top: 2px; }
+    .back { display: inline-block; margin-top: 22px; }
+  </style>
+</head>
+<body>
+  <span class="h-kicker">Blood on Snow</span>
+  <h1 class="h-page">Data &amp; rules tests</h1>
+  <p class="note">These are the 16 checks from the build plan. They run against the JSON in <code>/data</code>.</p>
+  <div class="doc test-summary" id="summary">RUNNING TESTS…</div>
+  <ol class="results" id="results"></ol>
+  <a class="btn secondary back" href="index.html">Back to the builder</a>
+
+  <script type="module">
+    import { loadData } from './js/data.js';
+    import { runTests } from './js/tests.js';
+
+    const summary = document.getElementById('summary');
+    const results = document.getElementById('results');
+
+    try {
+      await loadData();
+      const report = await runTests();
+      summary.textContent = report.failed
+        ? `${report.passed} / ${report.total} passed. ${report.failed} failed.`
+        : `All ${report.total} tests passed.`;
+      summary.classList.add(report.failed ? 'fail' : 'pass');
+
+      for (const result of report.results) {
+        const item = document.createElement('li');
+        item.className = `result ${result.ok ? 'pass' : 'fail'}`;
+        const status = document.createElement('span');
+        status.className = 'status';
+        status.textContent = result.ok ? 'Pass' : 'Fail';
+        const body = document.createElement('span');
+        body.className = 'name';
+        body.textContent = result.name;
+        if (!result.ok) {
+          const detail = document.createElement('span');
+          detail.className = 'detail';
+          detail.textContent = result.message;
+          body.append(detail);
+        }
+        item.append(status, body);
+        results.append(item);
+      }
+      document.body.dataset.status = report.failed ? 'failed' : 'passed';
+      document.title = `${report.failed ? 'FAIL' : 'PASS'} — Blood on Snow tests`;
+    } catch (error) {
+      summary.textContent = `Could not run tests: ${error.message}`;
+      summary.classList.add('fail');
+      document.body.dataset.status = 'error';
+    }
+  </script>
+</body>
+</html>

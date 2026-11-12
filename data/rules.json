@@ -1,0 +1,8 @@
+{
+  "gameSizes": [250, 500, 750, 1000],
+  "defaultGameSize": 500,
+  "mgPerPoints": 250,
+  "carry": { "firearms": 2, "otherItems": 2 },
+  "maxPerList": { "character": 1, "cossack": 1, "colourRegiments": 3 },
+  "horseCost": 7
+}
